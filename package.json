@@ -1,0 +1,30 @@
+{
+  "name": "@wapps/gatsby-plugin-material-ui",
+  "version": "0.0.1",
+  "description": "Gatsby plugin for Material UI with built-in server-side rendering support",
+  "license": "MIT",
+  "author": "hello@webappsolutions.de",
+  "keywords": [
+    "react",
+    "gatsby",
+    "material ui"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir . --ignore __tests__",
+    "watch": "babel -w src --out-dir . --ignore __tests__",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "react-jss": "^8.6.1"
+  },
+  "peerDependencies": {
+    "@material-ui/core": ">=1.0.0",
+    "gatsby": ">2.0.0-alpha"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
