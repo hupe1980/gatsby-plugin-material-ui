@@ -8,6 +8,7 @@
   "keywords": [
     "react",
     "gatsby",
+    "gatsby-plugin",
     "material ui"
   ],
   "main": "index.js",

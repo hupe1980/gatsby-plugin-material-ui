@@ -1,6 +1,6 @@
 # @wapps/gatsby-plugin-material-ui
 
-A [Gatsby](https://github.com/gatsbyjs/gatsby) plugin for
+> A [Gatsby](https://github.com/gatsbyjs/gatsby) plugin for
 [Material UI](https://github.com/mui-org/material-ui) with
 built-in server-side rendering support.
 
