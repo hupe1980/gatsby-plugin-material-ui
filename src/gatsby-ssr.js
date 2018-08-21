@@ -15,7 +15,7 @@ const defaultOptions = {
 
 const sheetsRegistry = new SheetsRegistry();
 
-exports.wrapRootElement = ({ element }, options = defaultOptions) => () => {
+exports.wrapRootElement = ({ element }, options = defaultOptions) => {
   const { dangerouslyUseGlobalCSS, productionPrefix, theme } = options;
 
   const generateClassName = createGenerateClassName({

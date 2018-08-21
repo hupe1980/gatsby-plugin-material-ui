@@ -19,7 +19,7 @@ const defaultOptions = {
   productionPrefix: 'jss',
 };
 
-exports.wrapRootElement = ({ element }, options = defaultOptions) => () => {
+exports.wrapRootElement = ({ element }, options = defaultOptions) => {
   const { dangerouslyUseGlobalCSS, productionPrefix, theme } = options;
 
   const generateClassName = createGenerateClassName({
