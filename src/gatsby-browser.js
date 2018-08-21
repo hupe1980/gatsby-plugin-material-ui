@@ -31,7 +31,7 @@ export const wrapRootElement = ({ element }, options = defaultOptions) => () => 
     <JssProvider generateClassName={generateClassName}>
       <MuiThemeProvider theme={createMuiTheme(theme)}>
         <CssBaseline />
-        <Root />
+        {element}
       </MuiThemeProvider>
     </JssProvider>
   );
