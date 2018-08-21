@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core/styles';
 
 // Remove the server-side injected CSS.
-exports.onInitialClientRender = () => {
+export const onInitialClientRender = () => {
   const ssStyles = window.document.getElementById('server-side-jss');
   ssStyles && ssStyles.parentNode.removeChild(ssStyles);
 };
@@ -19,7 +19,7 @@ const defaultOptions = {
   productionPrefix: 'jss',
 };
 
-exports.wrapRootComponent = ({ Root }, options = defaultOptions) => () => {
+export const wrapRootElement = ({ element }, options = defaultOptions) => () => {
   const { dangerouslyUseGlobalCSS, productionPrefix, theme } = options;
 
   const generateClassName = createGenerateClassName({

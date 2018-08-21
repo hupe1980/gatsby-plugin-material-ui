@@ -14,41 +14,36 @@ const defaultOptions = {
   productionPrefix: 'jss',
 };
 
-exports.replaceRenderer = (
-  { bodyComponent, replaceBodyHTMLString, setHeadComponents },
-  options = defaultOptions,
-) => {
-  const { dangerouslyUseGlobalCSS, productionPrefix, theme } = options;
+const sheetsRegistry = new SheetsRegistry();
 
-  const sheetsRegistry = new SheetsRegistry();
+export const wrapRootElement = ({ element }, options = defaultOptions) => () => {
+  const { dangerouslyUseGlobalCSS, productionPrefix, theme } = options;
 
   const generateClassName = createGenerateClassName({
     dangerouslyUseGlobalCSS,
     productionPrefix,
   });
 
-  const bodyHTML = renderToString(
-    <JssProvider
-      registry={sheetsRegistry}
+  return (
+    <JssProvider 
+      registry={sheetsRegistry} 
       generateClassName={generateClassName}
     >
       <MuiThemeProvider theme={createMuiTheme(theme)} sheetsManager={new Map()}>
         <CssBaseline />
-        {bodyComponent}
+        {element}
       </MuiThemeProvider>
-    </JssProvider>,
+    </JssProvider>
   );
+};
 
-  replaceBodyHTMLString(bodyHTML);
-
-  const css = sheetsRegistry.toString();
-
+export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
     <style
       type="text/css"
       id="server-side-jss"
       key="server-side-jss"
-      dangerouslySetInnerHTML={{ __html: css }}
+      dangerouslySetInnerHTML={{ __html: sheetsRegistry.toString() }}
     />,
-  ]);
+  ])
 };
