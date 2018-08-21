@@ -15,7 +15,7 @@ const defaultOptions = {
 
 const sheetsRegistry = new SheetsRegistry();
 
-exports.wrapRootElement = ({ element }, options = defaultOptions) => {
+export const wrapRootElement = ({ element }, options = defaultOptions) => {
   const { dangerouslyUseGlobalCSS, productionPrefix, theme } = options;
 
   const generateClassName = createGenerateClassName({
@@ -36,7 +36,7 @@ exports.wrapRootElement = ({ element }, options = defaultOptions) => {
   );
 };
 
-exports.onRenderBody = ({ setHeadComponents }) => {
+export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
     <style
       type="text/css"
