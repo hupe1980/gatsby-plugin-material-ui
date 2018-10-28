@@ -13,15 +13,18 @@ const defaultOptions = {
   productionPrefix: 'jss',
 };
 
-const sheetsRegistry = new SheetsRegistry();
+const sheetsRegistryManager = new Map()
 
-export const wrapRootElement = ({ element }, options = defaultOptions) => {
+export const wrapRootElement = ({ element, pathname }, options = defaultOptions) => {
   const { dangerouslyUseGlobalCSS, productionPrefix, theme } = options;
-
+  
   const generateClassName = createGenerateClassName({
     dangerouslyUseGlobalCSS,
     productionPrefix,
   });
+
+  const sheets = new SheetsRegistry()
+  sheetsRegistryManager.set(pathname, sheets)
 
   return (
     <JssProvider 
@@ -36,13 +39,19 @@ export const wrapRootElement = ({ element }, options = defaultOptions) => {
   );
 };
 
-export const onRenderBody = ({ setHeadComponents }) => {
-  setHeadComponents([
-    <style
-      type="text/css"
-      id="server-side-jss"
-      key="server-side-jss"
-      dangerouslySetInnerHTML={{ __html: sheetsRegistry.toString() }}
-    />,
-  ])
+export const onRenderBody = ({ setHeadComponents, pathname }) => {
+  const sheets = sheetsRegistryManager.get(pathname);
+
+  if (sheets) {
+    setHeadComponents([
+      <style
+        type="text/css"
+        id="server-side-jss"
+        key="server-side-jss"
+        dangerouslySetInnerHTML={{ __html: sheetsRegistry.toString() }}
+      />,
+    ]);
+
+    sheetsRegistryManager.delete(pathname);
+  }
 };
