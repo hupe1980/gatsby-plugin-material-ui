@@ -26,8 +26,8 @@ export const wrapRootElement = ({ element, pathname }, options) => {
     productionPrefix,
   });
 
-  const sheets = new SheetsRegistry()
-  sheetsRegistryManager.set(pathname, sheets)
+  const sheetsRegistry = new SheetsRegistry()
+  sheetsRegistryManager.set(pathname, sheetsRegistry)
 
   return (
     <JssProvider 
@@ -43,7 +43,7 @@ export const wrapRootElement = ({ element, pathname }, options) => {
 };
 
 export const onRenderBody = ({ setHeadComponents, pathname }) => {
-  const sheets = sheetsRegistryManager.get(pathname);
+  const sheetsRegistry = sheetsRegistryManager.get(pathname);
 
   if (sheets) {
     setHeadComponents([

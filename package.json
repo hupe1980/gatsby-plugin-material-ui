@@ -1,6 +1,6 @@
 {
   "name": "@wapps/gatsby-plugin-material-ui",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Gatsby plugin for Material UI with built-in server-side rendering support",
   "license": "MIT",
   "author": "hello@webappsolutions.de",
