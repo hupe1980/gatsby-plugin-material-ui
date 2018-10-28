@@ -15,8 +15,11 @@ const defaultOptions = {
 
 const sheetsRegistryManager = new Map()
 
-export const wrapRootElement = ({ element, pathname }, options = defaultOptions) => {
-  const { dangerouslyUseGlobalCSS, productionPrefix, theme } = options;
+export const wrapRootElement = ({ element, pathname }, options) => {
+  const { dangerouslyUseGlobalCSS, productionPrefix, theme } = {
+    ...defaultOptions,
+    ...options,
+  };
   
   const generateClassName = createGenerateClassName({
     dangerouslyUseGlobalCSS,

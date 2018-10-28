@@ -19,8 +19,11 @@ const defaultOptions = {
   productionPrefix: 'jss',
 };
 
-export const wrapRootElement = ({ element }, options = defaultOptions) => {
-  const { dangerouslyUseGlobalCSS, productionPrefix, theme } = options;
+export const wrapRootElement = ({ element }, options) => {
+  const { dangerouslyUseGlobalCSS, productionPrefix, theme } = {
+    ...defaultOptions,
+    ...options,
+  };
 
   const generateClassName = createGenerateClassName({
     dangerouslyUseGlobalCSS,
