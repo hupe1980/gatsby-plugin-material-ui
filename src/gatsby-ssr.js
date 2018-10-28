@@ -13,9 +13,9 @@ const defaultOptions = {
   productionPrefix: 'jss',
 };
 
-const sheetsRegistryManager = new Map()
+const sheetsRegistry = new SheetsRegistry();
 
-export const wrapRootElement = ({ element, pathname }, options) => {
+export const wrapRootElement = ({ element }, options) => {
   const { dangerouslyUseGlobalCSS, productionPrefix, theme } = {
     ...defaultOptions,
     ...options,
@@ -25,9 +25,6 @@ export const wrapRootElement = ({ element, pathname }, options) => {
     dangerouslyUseGlobalCSS,
     productionPrefix,
   });
-
-  const sheetsRegistry = new SheetsRegistry()
-  sheetsRegistryManager.set(pathname, sheetsRegistry)
 
   return (
     <JssProvider 
@@ -42,10 +39,7 @@ export const wrapRootElement = ({ element, pathname }, options) => {
   );
 };
 
-export const onRenderBody = ({ setHeadComponents, pathname }) => {
-  const sheetsRegistry = sheetsRegistryManager.get(pathname);
-
-  if (sheetsRegistry) {
+export const onRenderBody = ({ setHeadComponents }) => {
     setHeadComponents([
       <style
         type="text/css"
@@ -54,7 +48,4 @@ export const onRenderBody = ({ setHeadComponents, pathname }) => {
         dangerouslySetInnerHTML={{ __html: sheetsRegistry.toString() }}
       />,
     ]);
-
-    sheetsRegistryManager.delete(pathname);
-  }
 };
