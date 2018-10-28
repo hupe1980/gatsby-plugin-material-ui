@@ -45,7 +45,7 @@ export const wrapRootElement = ({ element, pathname }, options) => {
 export const onRenderBody = ({ setHeadComponents, pathname }) => {
   const sheetsRegistry = sheetsRegistryManager.get(pathname);
 
-  if (sheets) {
+  if (sheetsRegistry) {
     setHeadComponents([
       <style
         type="text/css"
