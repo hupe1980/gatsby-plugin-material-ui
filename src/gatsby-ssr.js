@@ -26,9 +26,8 @@ export const wrapRootElement = ({ element, pathname }, options) => {
     productionPrefix,
   });
 
-  const key = pathname || 'NO_PATHNAME';
   const sheetsRegistry = new SheetsRegistry();
-  sheetsRegistryMap.set(key, sheetsRegistry);
+  sheetsRegistryMap.set(pathname, sheetsRegistry);
 
   return (
     <JssProvider
@@ -44,8 +43,7 @@ export const wrapRootElement = ({ element, pathname }, options) => {
 };
 
 export const onRenderBody = ({ setHeadComponents, pathname }) => {
-  const key = pathname || 'NO_PATHNAME';
-  const sheetsRegistry = sheetsRegistryMap.get(key);
+  const sheetsRegistry = sheetsRegistryMap.get(pathname);
 
   if (sheetsRegistry) {
     setHeadComponents([
@@ -57,6 +55,6 @@ export const onRenderBody = ({ setHeadComponents, pathname }) => {
       />,
     ]);
 
-    sheetsRegistryMap.delete(key);
+    sheetsRegistryMap.delete(pathname);
   }
 };
