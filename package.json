@@ -22,7 +22,7 @@
   },
   "peerDependencies": {
     "@material-ui/core": ">=3.0.0",
-    "gatsby": ">=2.0.0"
+    "gatsby": ">=2.0.33"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
