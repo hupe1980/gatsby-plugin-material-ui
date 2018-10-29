@@ -29,7 +29,16 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
-    "eslint": "^5.8.0"
+    "babel-eslint": "9.x",
+    "eslint": "5.x",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-react-app": "^3.0.4",
+    "eslint-plugin-flowtype": "2.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-prettier": "^2.6.1",
+    "eslint-plugin-react": "7.x",
+    "prettier": "^1.14.3"
   },
   "publishConfig": {
     "access": "public"

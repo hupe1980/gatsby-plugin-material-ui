@@ -20,15 +20,15 @@ export const wrapRootElement = ({ element }, options) => {
     ...defaultOptions,
     ...options,
   };
-  
+
   const generateClassName = createGenerateClassName({
     dangerouslyUseGlobalCSS,
     productionPrefix,
   });
 
   return (
-    <JssProvider 
-      registry={sheetsRegistry} 
+    <JssProvider
+      registry={sheetsRegistry}
       generateClassName={generateClassName}
     >
       <MuiThemeProvider theme={createMuiTheme(theme)} sheetsManager={new Map()}>
@@ -40,12 +40,12 @@ export const wrapRootElement = ({ element }, options) => {
 };
 
 export const onRenderBody = ({ setHeadComponents }) => {
-    setHeadComponents([
-      <style
-        type="text/css"
-        id="server-side-jss"
-        key="server-side-jss"
-        dangerouslySetInnerHTML={{ __html: sheetsRegistry.toString() }}
-      />,
-    ]);
+  setHeadComponents([
+    <style
+      type="text/css"
+      id="server-side-jss"
+      key="server-side-jss"
+      dangerouslySetInnerHTML={{ __html: sheetsRegistry.toString() }}
+    />,
+  ]);
 };
