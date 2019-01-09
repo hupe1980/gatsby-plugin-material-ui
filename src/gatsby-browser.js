@@ -9,6 +9,12 @@ import {
 } from '@material-ui/core/styles';
 import { create } from 'jss';
 
+const jss = create({
+  ...jssPreset(),
+  // We define a custom insertion point that JSS will look for injecting the styles in the DOM.
+  insertionPoint: 'jss-insertion-point',
+});
+
 // Add the JSS insertion point comment to the top of the head.
 exports.onClientEntry = () => {
   const styleNode = window.document.createComment('jss-insertion-point');
@@ -36,12 +42,6 @@ export const wrapRootElement = ({ element }, options) => {
   const generateClassName = createGenerateClassName({
     dangerouslyUseGlobalCSS,
     productionPrefix,
-  });
-
-  const jss = create({
-    ...jssPreset(),
-    // We define a custom insertion point that JSS will look for injecting the styles in the DOM.
-    insertionPoint: 'jss-insertion-point',
   });
 
   return (
