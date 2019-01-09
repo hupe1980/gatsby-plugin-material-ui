@@ -16,7 +16,7 @@ const jss = create({
 });
 
 // Add the JSS insertion point comment to the top of the head.
-exports.onClientEntry = () => {
+export const onClientEntry = () => {
   const styleNode = window.document.createComment('jss-insertion-point');
   window.document.head.insertBefore(styleNode, window.document.head.firstChild);
 };
