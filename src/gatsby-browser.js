@@ -5,7 +5,21 @@ import {
   createMuiTheme,
   createGenerateClassName,
   MuiThemeProvider,
+  jssPreset,
 } from '@material-ui/core/styles';
+import { create } from 'jss';
+
+const jss = create({
+  ...jssPreset(),
+  // We define a custom insertion point that JSS will look for injecting the styles in the DOM.
+  insertionPoint: 'jss-insertion-point',
+});
+
+// Add the JSS insertion point comment to the top of the head.
+export const onClientEntry = () => {
+  const styleNode = window.document.createComment('jss-insertion-point');
+  window.document.head.insertBefore(styleNode, window.document.head.firstChild);
+};
 
 // Remove the server-side injected CSS.
 export const onInitialClientRender = () => {
@@ -31,7 +45,7 @@ export const wrapRootElement = ({ element }, options) => {
   });
 
   return (
-    <JssProvider generateClassName={generateClassName}>
+    <JssProvider jss={jss} generateClassName={generateClassName}>
       <MuiThemeProvider theme={createMuiTheme(theme)}>
         <CssBaseline />
         {element}
