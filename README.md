@@ -1,12 +1,12 @@
 # @wapps/gatsby-plugin-material-ui
 
 > A [Gatsby](https://github.com/gatsbyjs/gatsby) plugin for
-[Material UI](https://github.com/mui-org/material-ui) with
-built-in server-side rendering support.
+> [Material UI](https://github.com/mui-org/material-ui) with
+> built-in server-side rendering support.
 
 ## Install
 
-`npm install --save @wapps/gatsby-plugin-material-ui @material-ui/core`
+`npm install --save @wapps/gatsby-plugin-material-ui@next @material-ui/core`
 
 ## How to use
 
@@ -22,15 +22,17 @@ module.exports = {
       },
     },
   ],
-}
+};
 ```
 
 ## Options
 
 You can pass options to the plugin:
+
 - theme (Object [optional]): Default to {}.
 - dangerouslyUseGlobalCSS (Boolean [optional]): Defaults to false. Makes the Material-UI class names deterministic.
 - productionPrefix (String [optional]): Defaults to 'jss'. The string used to prefix the class names in production.
+- seed (String [optional]): Defaults to ''. The string used to uniquely identify the generator. It can be used to avoid class name collisions when using multiple generators.
 
 For example:
 
