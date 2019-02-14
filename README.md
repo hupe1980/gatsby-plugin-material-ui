@@ -1,4 +1,4 @@
-# @wapps/gatsby-plugin-material-ui
+# gatsby-plugin-material-ui
 
 > A [Gatsby](https://github.com/gatsbyjs/gatsby) plugin for
 > [Material UI](https://github.com/mui-org/material-ui) with
@@ -6,7 +6,7 @@
 
 ## Install
 
-`npm install --save @wapps/gatsby-plugin-material-ui@next @material-ui/core`
+`npm install --save gatsby-plugin-material-ui@next @material-ui/core`
 
 ## How to use
 
@@ -16,7 +16,7 @@ Edit `gatsby-config.js`
 module.exports = {
   plugins: [
     {
-      resolve: `@wapps/gatsby-plugin-material-ui`,
+      resolve: `gatsby-plugin-material-ui`,
       options: {
         // Add any options here
       },
