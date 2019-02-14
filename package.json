@@ -1,6 +1,6 @@
 {
-  "name": "@wapps/gatsby-plugin-material-ui",
-  "version": "2.0.0-alpha.1",
+  "name": "gatsby-plugin-material-ui",
+  "version": "2.0.0-alpha.2",
   "description": "Gatsby plugin for Material UI with built-in server-side rendering support",
   "license": "MIT",
   "author": "hello@webappsolutions.de",
@@ -40,8 +40,5 @@
     "eslint-plugin-prettier": "^2.6.1",
     "eslint-plugin-react": "7.x",
     "prettier": "^1.14.3"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
