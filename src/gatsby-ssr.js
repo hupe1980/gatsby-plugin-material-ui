@@ -1,69 +1,22 @@
-import React from 'react';
-import { SheetsRegistry } from 'jss';
-import {
-  createGenerateClassName,
-  StylesProvider,
-  ThemeProvider,
-  install,
-} from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { ServerStyleSheets } from '@material-ui/styles';
 
-// This installation step is temporary.
-// Behind the scenes, the install() function switches the styling engine the core components use.
-install();
+// Keep track of sheets for each page
+const globalLeak = new Map();
 
-const defaultOptions = {
-  theme: {},
-  dangerouslyUseGlobalCSS: false,
-  productionPrefix: 'jss',
-  seed: '',
-};
+export const wrapRootElement = ({ element, pathname }, pluginOptions) => {
+  const sheets = new ServerStyleSheets(pluginOptions.stylesProvider);
+  globalLeak.set(pathname, sheets);
 
-const sheetsRegistryMap = new Map();
-
-export const wrapRootElement = ({ element, pathname }, options) => {
-  const { dangerouslyUseGlobalCSS, productionPrefix, seed, theme } = {
-    ...defaultOptions,
-    ...options,
-  };
-
-  const generateClassName = createGenerateClassName({
-    dangerouslyUseGlobalCSS,
-    productionPrefix,
-    seed,
-  });
-
-  const sheetsRegistry = new SheetsRegistry();
-  sheetsRegistryMap.set(pathname, sheetsRegistry);
-
-  return (
-    <StylesProvider
-      sheetsRegistry={sheetsRegistry}
-      sheetsManager={new Map()}
-      generateClassName={generateClassName}
-    >
-      <ThemeProvider theme={createMuiTheme(theme)}>
-        <CssBaseline />
-        {element}
-      </ThemeProvider>
-    </StylesProvider>
-  );
+  return sheets.collect(element);
 };
 
 export const onRenderBody = ({ setHeadComponents, pathname }) => {
-  const sheetsRegistry = sheetsRegistryMap.get(pathname);
-
-  if (sheetsRegistry) {
-    setHeadComponents([
-      <style
-        type="text/css"
-        id="server-side-jss"
-        key="server-side-jss"
-        dangerouslySetInnerHTML={{ __html: sheetsRegistry.toString() }}
-      />,
-    ]);
-
-    sheetsRegistryMap.delete(pathname);
+  // onRenderBody is called in develop mode. It's strange?
+  if (!pathname) {
+    return;
   }
+
+  const sheets = globalLeak.get(pathname);
+  setHeadComponents([sheets.getStyleElement()]);
+  globalLeak.delete(pathname);
 };
