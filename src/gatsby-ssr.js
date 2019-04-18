@@ -11,12 +11,9 @@ export const wrapRootElement = ({ element, pathname }, pluginOptions) => {
 };
 
 export const onRenderBody = ({ setHeadComponents, pathname }) => {
-  // onRenderBody is called in develop mode. It's strange?
-  if (!pathname) {
-    return;
-  }
-
   const sheets = globalLeak.get(pathname);
-  setHeadComponents([sheets.getStyleElement()]);
-  globalLeak.delete(pathname);
+  if (sheets) {
+    setHeadComponents([sheets.getStyleElement()]);
+    globalLeak.delete(pathname);
+  }
 };
