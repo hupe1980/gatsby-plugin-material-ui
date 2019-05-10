@@ -17,6 +17,11 @@
     "watch": "babel -w src --out-dir . --ignore __tests__",
     "prepare": "cross-env NODE_ENV=production npm run build"
   },
+  "dependencies": {
+    "autoprefixer": "^9.5.1",
+    "clean-css": "^4.2.1",
+    "postcss": "^7.0.16"
+  },
   "peerDependencies": {
     "@material-ui/styles": ">=4.0.0-beta.0",
     "gatsby": ">=2.0.33"
