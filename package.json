@@ -4,7 +4,10 @@
   "description": "Gatsby plugin for Material-UI with built-in server-side rendering support",
   "license": "MIT",
   "author": "hello@webappsolutions.de",
-  "repository": "hupe1980/gatsby-plugin-material-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hupe1980/gatsby-plugin-material-ui"
+  },
   "keywords": [
     "react",
     "gatsby",
