@@ -36,7 +36,9 @@ export const onRenderBody = (
 
     let css = sheets.toString();
 
-    css = disableAutoprefixing ? css : prefixer.process(css).css;
+    css = disableAutoprefixing
+      ? css
+      : prefixer.process(css, { from: undefined }).css;
     css = disableMinification ? css : cleanCSS.minify(css).styles;
 
     setHeadComponents([
