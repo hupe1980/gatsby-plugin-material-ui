@@ -41,7 +41,6 @@ export const onRenderBody = (
 
     setHeadComponents([
       <style
-        type="text/css"
         id="server-side-jss"
         key="server-side-jss"
         dangerouslySetInnerHTML={{ __html: css }}
