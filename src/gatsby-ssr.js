@@ -48,7 +48,6 @@ export const onRenderBody = ({ setHeadComponents, pathname }) => {
   if (sheetsRegistry) {
     setHeadComponents([
       <style
-        type="text/css"
         id="server-side-jss"
         key="server-side-jss"
         dangerouslySetInnerHTML={{ __html: sheetsRegistry.toString() }}
