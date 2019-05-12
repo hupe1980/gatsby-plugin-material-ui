@@ -33,6 +33,29 @@ module.exports = {
 };
 ```
 
+## Autoprefixing and minification
+
+By default, the plugin adds vendor-specific prefixes and minimizes the server-side CSS. The following options are available for deactivating:
+
+| Option               | Default | Description                          |
+| -------------------- | ------- | ------------------------------------ |
+| disableAutoprefixing | false   | Opt-out Autoprefixing (autoprefixer) |
+| disableMinification  | false   | Opt-out minification (clean-css)     |
+
+```javascript
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        // disableAutoprefixing: true,
+        // disableMinification: true
+      },
+    },
+  ],
+};
+```
+
 ## Examples
 
 You can find an official integration example of this plugin [on Material-UI side](https://github.com/mui-org/material-ui/tree/next/examples/gatsby-next), then you can pick one of the [Page Layout Examples](https://next.material-ui.com/getting-started/page-layout-examples/).
