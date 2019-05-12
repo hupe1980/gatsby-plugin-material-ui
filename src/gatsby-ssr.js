@@ -43,8 +43,8 @@ export const onRenderBody = (
 
     setHeadComponents([
       <style
-        id="server-side-jss"
-        key="server-side-jss"
+        id="jss-server-side"
+        key="jss-server-side"
         dangerouslySetInnerHTML={{ __html: css }}
       />,
     ]);
