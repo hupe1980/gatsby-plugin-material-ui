@@ -65,3 +65,5 @@ lib
 
 .DS_Store
 
+/gatsby-browser.js
+/gatsby-ssr.js

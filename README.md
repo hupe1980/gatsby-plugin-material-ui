@@ -10,51 +10,9 @@ This is the plugin for Material-UI v4. The plugin for v3 can be found [here](htt
 
 `npm install --save gatsby-plugin-material-ui@next @material-ui/styles@next`
 
-## How to use
+## Documentation
 
-Edit `gatsby-config.js`
-
-```javascript
-module.exports = {
-  plugins: [
-    {
-      resolve: `gatsby-plugin-material-ui`,
-      // If you want to use styled components, in conjunction to Material-UI, you should:
-      // - Change the injection order
-      // - Add the plugin
-      options: {
-        // stylesProvider: {
-        //   injectFirst: true,
-        // },
-      },
-      // 'gatsby-plugin-styled-components',
-    },
-  ],
-};
-```
-
-## Autoprefixing and minification
-
-By default, the plugin adds vendor-specific prefixes and minimizes the server-side CSS. The following options are available for deactivating:
-
-| Option               | Default | Description                          |
-| -------------------- | ------- | ------------------------------------ |
-| disableAutoprefixing | false   | Opt-out Autoprefixing (autoprefixer) |
-| disableMinification  | false   | Opt-out minification (clean-css)     |
-
-```javascript
-module.exports = {
-  plugins: [
-    {
-      resolve: `gatsby-plugin-material-ui`,
-      options: {
-        // disableAutoprefixing: true,
-        // disableMinification: true
-      },
-    },
-  ],
-};
-```
+[The documentation](/gatsby-plugin-material-ui/README.md)
 
 ## Examples
 
