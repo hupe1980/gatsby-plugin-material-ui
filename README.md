@@ -12,7 +12,7 @@ This is the plugin for Material-UI v4. The plugin for v3 can be found [here](htt
 
 ## Documentation
 
-[The documentation](/gatsby-plugin-material-ui/README.md)
+[The documentation](/gatsby-plugin-material-ui/)
 
 ## Examples
 
