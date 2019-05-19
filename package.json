@@ -20,8 +20,8 @@
     "gatsby-plugin-material-ui"
   ],
   "scripts": {
-    "test:development-runtime": "yarn workspace development-runtime test",
-    "test:production-runtime": "yarn workspace production-runtime test",
+    "test:development-runtime": "yarn prepare && yarn workspace development-runtime test",
+    "test:production-runtime": "yarn prepare && yarn workspace production-runtime test",
     "prepare": "lerna run prepare"
   },
   "devDependencies": {
