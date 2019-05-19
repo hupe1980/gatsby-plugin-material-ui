@@ -25,7 +25,8 @@
     "prepare": "lerna run prepare",
     "lint": "eslint . --cache  --report-unused-disable-directives",
     "lint:ci": "eslint . --report-unused-disable-directives",
-    "lint:fix": "eslint . --cache --fix"
+    "lint:fix": "eslint . --cache --fix",
+    "jest": "lerna run jest --stream"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

@@ -4,6 +4,5 @@
 
 /gatsby-plugin-material-ui/**/*.js
 !/gatsby-plugin-material-ui/src/**/*.js
-/gatsby-plugin-material-ui/src/*/*.test.js
 
 node_modules
