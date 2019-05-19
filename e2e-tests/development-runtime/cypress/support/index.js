@@ -1,2 +1,2 @@
-import 'gatsby-cypress';
-import './commands';
+import "gatsby-cypress";
+import "./commands";

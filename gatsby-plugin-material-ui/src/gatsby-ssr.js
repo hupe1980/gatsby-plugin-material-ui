@@ -1,8 +1,8 @@
-import React from 'react';
-import { ServerStyleSheets } from '@material-ui/styles';
-import postcss from 'postcss';
-import autoprefixer from 'autoprefixer';
-import CleanCSS from 'clean-css';
+import React from "react";
+import { ServerStyleSheets } from "@material-ui/styles";
+import postcss from "postcss";
+import autoprefixer from "autoprefixer";
+import CleanCSS from "clean-css";
 
 // Keep track of sheets for each page
 const globalLeak = new Map();

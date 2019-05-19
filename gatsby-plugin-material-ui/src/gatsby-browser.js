@@ -1,5 +1,5 @@
-import React from 'react';
-import { StylesProvider } from '@material-ui/styles';
+import React from "react";
+import { StylesProvider } from "@material-ui/styles";
 
 export const onInitialClientRender = () => {
   if (process.env.BUILD_STAGE === `develop`) {
@@ -7,7 +7,7 @@ export const onInitialClientRender = () => {
   }
 
   // Remove the server-side injected CSS.
-  const jssStyles = document.querySelector('#jss-server-side');
+  const jssStyles = document.querySelector(`#jss-server-side`);
   if (jssStyles) {
     jssStyles.parentNode.removeChild(jssStyles);
   }
