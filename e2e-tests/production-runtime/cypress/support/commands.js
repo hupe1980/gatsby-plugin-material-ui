@@ -1,4 +1,4 @@
-import 'cypress-testing-library/add-commands';
+import "cypress-testing-library/add-commands";
 
 Cypress.Commands.add(`lifecycleCallCount`, action =>
   cy
@@ -6,7 +6,7 @@ Cypress.Commands.add(`lifecycleCallCount`, action =>
     .then(
       win =>
         win.___PageComponentLifecycleCallsLog.filter(
-          entry => entry.action === action
-        ).length
-    )
+          entry => entry.action === action,
+        ).length,
+    ),
 );

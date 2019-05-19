@@ -1,20 +1,20 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import MuiLink from '@material-ui/core/Link';
+import React from "react";
+import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import MuiLink from "@material-ui/core/Link";
 
-import ProTip from '../components/pro-tip';
-import Link from '../components/link';
+import ProTip from "../components/pro-tip";
+import Link from "../components/link";
 
 function MadeWithLove() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with love by the '}
+      {`Built with love by the `}
       <MuiLink color="inherit" href="https://material-ui.com/">
         Material-UI
       </MuiLink>
-      {' team.'}
+      {` team.`}
     </Typography>
   );
 }
