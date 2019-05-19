@@ -1,5 +1,6 @@
 {
-  "name": "gatsby-plugin-material-ui",
+  "name": "root",
+  "private": true,
   "version": "2.0.0-beta.2",
   "description": "Gatsby plugin for Material-UI with built-in server-side rendering support",
   "license": "MIT",
@@ -14,35 +15,16 @@
     "gatsby-plugin",
     "material-ui"
   ],
-  "main": "index.js",
+  "workspaces": [
+    "e2e-tests/*",
+    "gatsby-plugin-material-ui"
+  ],
   "scripts": {
-    "build": "babel src --out-dir . --ignore __tests__",
-    "watch": "babel -w src --out-dir . --ignore __tests__",
-    "prepare": "cross-env NODE_ENV=production npm run build"
-  },
-  "dependencies": {
-    "autoprefixer": "^9.5.1",
-    "clean-css": "^4.2.1",
-    "postcss": "^7.0.16"
-  },
-  "peerDependencies": {
-    "@material-ui/styles": ">=4.0.0-beta.0",
-    "gatsby": ">=2.0.33"
+    "test:development-runtime": "yarn prepare && yarn workspace development-runtime test",
+    "test:production-runtime": "yarn prepare && yarn workspace production-runtime test",
+    "prepare": "lerna run prepare"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "babel-eslint": "9.0.0",
-    "babel-preset-gatsby-package": "^0.1.4",
-    "cross-env": "^5.2.0",
-    "eslint": "5.16.0",
-    "eslint-config-prettier": "^2.10.0",
-    "eslint-config-react-app": "^3.0.8",
-    "eslint-plugin-flowtype": "2.50.3",
-    "eslint-plugin-import": "2.16.0",
-    "eslint-plugin-jsx-a11y": "6.2.1",
-    "eslint-plugin-prettier": "^2.6.1",
-    "eslint-plugin-react": "7.12.4",
-    "prettier": "^1.16.4"
+    "lerna": "^3.14.1"
   }
 }

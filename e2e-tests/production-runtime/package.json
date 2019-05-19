@@ -1,0 +1,33 @@
+{
+  "name": "production-runtime",
+  "private": true,
+  "version": "2.0.0-beta.2",
+  "dependencies": {
+    "@material-ui/core": "next",
+    "@material-ui/styles": "next",
+    "gatsby": "latest",
+    "gatsby-plugin-material-ui": "2.0.0-beta.2",
+    "gatsby-plugin-react-helmet": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-helmet": "latest"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "yarn develop",
+    "serve": "gatsby serve",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --browser chrome",
+    "start-server-and-test": "start-server-and-test serve http://localhost:9000 cy:run",
+    "test": "CYPRESS_SUPPORT=y yarn build && yarn start-server-and-test "
+  },
+  "devDependencies": {
+    "cypress": "^3.3.0",
+    "cypress-testing-library": "^3.0.1",
+    "gatsby-cypress": "^0.1.9",
+    "start-server-and-test": "^1.9.0"
+  }
+}
