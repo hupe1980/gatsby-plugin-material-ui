@@ -25,13 +25,13 @@ export const onPreBootstrap = ({ store }, pluginOptions) => {
   try {
     if (pluginOptions.pathToStylesProvider && pluginOptions.stylesProvider) {
       throw new Error(
-        'You specified both pathToStylesProvider and stylesProvider in gatsby-config.js. Only one should be specified...',
+        `You specified both pathToStylesProvider and stylesProvider in gatsby-config.js. Only one should be specified...`,
       );
     }
 
     if (pluginOptions.stylesProvider) {
       console.log(
-        'pluginOptions.stylesProvider:',
+        `pluginOptions.stylesProvider:`,
         pluginOptions.stylesProvider,
       );
       module = `const stylesProviderProps = ${JSON.stringify(
@@ -40,7 +40,7 @@ export const onPreBootstrap = ({ store }, pluginOptions) => {
 
 export default stylesProviderProps;
 `;
-      console.log('module:', module);
+      console.log(`module:`, module);
     } else if (pluginOptions.pathToStylesProvider) {
       module = `import stylesProviderProps from "${
         path.isAbsolute(pluginOptions.pathToStylesProvider)
@@ -68,6 +68,6 @@ export default stylesProviderProps;
 
     fs.writeFileSync(`${dir}/styles-provider-props.js`, module);
   } catch (e) {
-    console.error(e.name + ': ' + e.message);
+    console.error(e.name + `: ` + e.message);
   }
 };
