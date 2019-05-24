@@ -1,12 +1,12 @@
 {
   "name": "development-runtime",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/styles": "latest",
     "gatsby": "latest",
-    "gatsby-plugin-material-ui": "^2.0.0",
+    "gatsby-plugin-material-ui": "^2.0.1",
     "gatsby-plugin-react-helmet": "latest",
     "react": "latest",
     "react-dom": "latest",
