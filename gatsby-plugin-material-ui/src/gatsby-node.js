@@ -6,7 +6,6 @@ import os from 'os';
 // Happens before webpack starts compiling page.
 // .cache is available when gatsby-browser.js and gatsby-ssr.js runs.
 
-// eslint-disable-next-line import/prefer-default-export
 export const onPreBootstrap = ({ store }, pluginOptions) => {
   const { program } = store.getState();
 
@@ -30,17 +29,12 @@ export const onPreBootstrap = ({ store }, pluginOptions) => {
     }
 
     if (pluginOptions.stylesProvider) {
-      console.log(
-        `pluginOptions.stylesProvider:`,
-        pluginOptions.stylesProvider,
-      );
       module = `const stylesProviderProps = ${JSON.stringify(
         pluginOptions.stylesProvider,
       )};
 
 export default stylesProviderProps;
 `;
-      console.log(`module:`, module);
     } else if (pluginOptions.pathToStylesProvider) {
       module = `import stylesProviderProps from "${
         path.isAbsolute(pluginOptions.pathToStylesProvider)
