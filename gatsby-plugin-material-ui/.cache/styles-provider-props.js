@@ -1,5 +1,3 @@
-const stylesProviderProps = {
-injectFirst: true,
-};
+const stylesProviderProps = {};
 
 export default stylesProviderProps;
