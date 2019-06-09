@@ -68,3 +68,4 @@ lib
 /gatsby-browser.js
 /gatsby-ssr.js
 /gatsby-node.js
+.cache
