@@ -17,7 +17,7 @@ const defaultOptions = {
 };
 
 export const wrapRootElement = ({ element, pathname }, pluginOptions) => {
-  if (pluginOptions.stylesProvider) {
+  if (pluginOptions.stylesProvider || pluginOptions.pathToStylesProvider) {
     const sheets = new ServerStyleSheets(stylesProviderProps);
     globalLeak.set(pathname, sheets);
 
