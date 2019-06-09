@@ -1,8 +1,9 @@
-import React from "react";
-import { ServerStyleSheets } from "@material-ui/styles";
-import postcss from "postcss";
-import autoprefixer from "autoprefixer";
-import CleanCSS from "clean-css";
+import React from 'react';
+import { ServerStyleSheets } from '@material-ui/styles';
+import postcss from 'postcss';
+import autoprefixer from 'autoprefixer';
+import CleanCSS from 'clean-css';
+import stylesProviderProps from './.cache/styles-provider-props';
 
 // Keep track of sheets for each page
 const globalLeak = new Map();
@@ -16,10 +17,13 @@ const defaultOptions = {
 };
 
 export const wrapRootElement = ({ element, pathname }, pluginOptions) => {
-  const sheets = new ServerStyleSheets(pluginOptions.stylesProvider);
-  globalLeak.set(pathname, sheets);
+  if (pluginOptions.stylesProvider) {
+    const sheets = new ServerStyleSheets(stylesProviderProps);
+    globalLeak.set(pathname, sheets);
 
-  return sheets.collect(element);
+    return sheets.collect(element);
+  }
+  return element;
 };
 
 export const onRenderBody = (

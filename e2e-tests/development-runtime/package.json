@@ -22,12 +22,13 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run --browser chrome",
     "start-server-and-test": "start-server-and-test develop http://localhost:8000 cy:run",
-    "test": "CYPRESS_SUPPORT=y yarn start-server-and-test "
+    "test": "cross-env CYPRESS_SUPPORT=y yarn start-server-and-test "
   },
   "devDependencies": {
     "cypress": "^3.3.0",
     "cypress-testing-library": "^3.0.1",
     "gatsby-cypress": "^0.1.9",
-    "start-server-and-test": "^1.9.0"
+    "start-server-and-test": "^1.9.0",
+    "cross-env": "^5.2.0"
   }
 }
