@@ -14,19 +14,21 @@ This is the plugin for Material-UI v4. The plugin for v3 can be found [here](htt
 
 Edit `gatsby-config.js`
 
-```javascript
+```js
 module.exports = {
   plugins: [
     {
       resolve: `gatsby-plugin-material-ui`,
       // If you want to use styled components, in conjunction to Material-UI, you should:
       // - Change the injection order by adding a gatsby-mui-config.js and specifying the path in pluginConfigModule (e.g. src/utils/gatsby-mui-config.js)
-      // - Add the plugin
+      // Alternatively, if you just want to add the styles to the top of head, you can just provide the `injectFirst: true` option in a stylesProvider property (see below).
+      // - Add the `gatsby-plugin-styled-components` plugin
       options: {
         disableAutoprefixing: false,
         disableMinification: false,
-        // stylesProvider: { // <StylesProvider /> props
-        //   injectFirst: true,
+        // stylesProvider: {
+          // Place <StylesProvider /> props in here
+          // e.g. injectFirst: true,
         // },
         pathToStylesProvider: 'src/utils/styles-provider-props',
       },
@@ -38,12 +40,12 @@ module.exports = {
 ## gatsby-config.js Options
 
 - Either specify `StylesProvider` props directly here in the `stylesProvider` property, or in a file pointed too by `pathToStylesProvider`. Do not specify both, it will throw an error
-- disableAutoprefixing/disableMinification: (Boolean) See below
+- disableAutoprefixing/disableMinification: (Boolean) [See below](#autoprefixing-and-minification)
 - We provide the option to specify the `StylesProvider` props in a separate fle (`pathToStylesProvider`) in order to support adding a custom insertion point. Se below for instructions
 
 Example `styles-provider-props.js`:
 
-```javascript
+```js
 import { jssPreset } from '@material-ui/styles';
 import { create } from 'jss';
 
@@ -59,9 +61,6 @@ const stylesProviderProps = {
   // injectFirst: false,
   jss,
   // serverGenerateClassName: () => {},
-  // sheetsCache: {},
-  // sheetsManager: {},
-  // sheetsRegistry: {},
 };
 
 export default stylesProviderProps;
