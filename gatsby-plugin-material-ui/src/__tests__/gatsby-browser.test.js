@@ -1,5 +1,4 @@
 import { onInitialClientRender } from '../gatsby-browser';
-// import SPMock from '../.cache/styles-provider-props';
 
 jest.mock(
   `../.cache/styles-provider-props`,
