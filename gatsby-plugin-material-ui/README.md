@@ -12,22 +12,39 @@ This is the plugin for Material-UI v4. The plugin for v3 can be found [here](htt
 
 ## How to use
 
-Edit `gatsby-config.js`
+Feel free to use the plugin without any options.
+
+If using Material-UI together with other styling providers (like styled-components), you should make sure Material-UI styles end up on top of `<head>` (so the other styling providers can overwrite it). This is accomplished by editing `gatsby-config.js` in **one** of the two following ways:
+
+1. Add a `stylesProvider` property, and specify `injectFirst: true` (see below). This places Material-UI at the top of head
 
 ```js
 module.exports = {
   plugins: [
     {
       resolve: `gatsby-plugin-material-ui`,
-      // Ensure the styles are added to the top of head by providing the `injectFirst: true` option in a `stylesProvider` property (see below)
-      // - Alternatively, to specify the exact injection point in head, include the `pathToStylesProvider` property pointing to a config file (e.g. src/utils/styles-provider-props)
       options: {
         disableAutoprefixing: false,
         disableMinification: false,
-        // stylesProvider: {
-          // Place <StylesProvider /> props in here
-          // e.g. injectFirst: true,
-        // },
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
+  ],
+};
+```
+
+2. Alternatively, specify a specific point in `<head>` where the styles will be injected. This is done by spcifying the `pathToStylesProvder` property **instead** of the `stylesProvider` property. It should point to a configuration file, as seen below. You will also find an example configuration file below.
+
+```js
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        disableAutoprefixing: false,
+        disableMinification: false,
         pathToStylesProvider: 'src/utils/styles-provider-props',
       },
     },
@@ -35,13 +52,7 @@ module.exports = {
 };
 ```
 
-## gatsby-config.js Options
-
-- Either specify `StylesProvider` props directly here in the `stylesProvider` property, or in a file pointed too by `pathToStylesProvider`. Do not specify both, it will throw an error
-- disableAutoprefixing/disableMinification: (Boolean) [See below](#autoprefixing-and-minification)
-- We provide the option to specify the `StylesProvider` props in a separate fle (`pathToStylesProvider`) in order to support adding a custom insertion point. Se below for instructions
-
-Example `styles-provider-props.js`:
+## Example `styles-provider-props.js`:
 
 ```js
 import { jssPreset } from '@material-ui/styles';
