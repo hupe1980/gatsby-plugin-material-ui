@@ -8,9 +8,11 @@
     "gatsby": "latest",
     "gatsby-plugin-material-ui": "2.0.0-beta.2",
     "gatsby-plugin-react-helmet": "latest",
+    "gatsby-plugin-styled-components": "^3.0.7",
     "react": "latest",
     "react-dom": "latest",
-    "react-helmet": "latest"
+    "react-helmet": "latest",
+    "styled-components": "^4.3.1"
   },
   "license": "MIT",
   "scripts": {
