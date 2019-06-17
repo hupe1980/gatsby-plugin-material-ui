@@ -19,10 +19,8 @@ module.exports = {
   plugins: [
     {
       resolve: `gatsby-plugin-material-ui`,
-      // If you want to use styled components, in conjunction to Material-UI, you should:
-      // - Change the injection order by adding a gatsby-mui-config.js and specifying the path in pluginConfigModule (e.g. src/utils/gatsby-mui-config.js)
-      // Alternatively, if you just want to add the styles to the top of head, you can just provide the `injectFirst: true` option in a stylesProvider property (see below).
-      // - Add the `gatsby-plugin-styled-components` plugin
+      // Ensure the styles are added to the top of head by providing the `injectFirst: true` option in a `stylesProvider` property (see below)
+      // - Alternatively, to specify the exact injection point in head, include the `pathToStylesProvider` property pointing to a config file (e.g. src/utils/styles-provider-props)
       options: {
         disableAutoprefixing: false,
         disableMinification: false,
@@ -60,7 +58,6 @@ const stylesProviderProps = {
   // generateClassName: () => {},
   // injectFirst: false,
   jss,
-  // serverGenerateClassName: () => {},
 };
 
 export default stylesProviderProps;

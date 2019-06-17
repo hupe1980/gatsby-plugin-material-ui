@@ -17,13 +17,10 @@ const defaultOptions = {
 };
 
 export const wrapRootElement = ({ element, pathname }, pluginOptions) => {
-  if (pluginOptions.stylesProvider || pluginOptions.pathToStylesProvider) {
-    const sheets = new ServerStyleSheets(stylesProviderProps);
-    globalLeak.set(pathname, sheets);
+  const sheets = new ServerStyleSheets(stylesProviderProps);
+  globalLeak.set(pathname, sheets);
 
-    return sheets.collect(element);
-  }
-  return element;
+  return sheets.collect(element);
 };
 
 export const onRenderBody = (
