@@ -52,7 +52,7 @@ module.exports = {
 };
 ```
 
-## Example `styles-provider-props.js`:
+## Example `styles-provider-props.js`
 
 ```js
 import { jssPreset } from '@material-ui/styles';
