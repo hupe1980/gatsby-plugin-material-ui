@@ -1,11 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider } from '@material-ui/styles';
-import theme from '../../src/theme';
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider } from "@material-ui/styles";
+import theme from "../../src/theme";
+
+let injectFirstNode;
 
 export default function TopLayout(props) {
+  if (typeof window !== `undefined` && !injectFirstNode) {
+    const head = document.head;
+    injectFirstNode = document.createComment(`mui-inject-first`);
+    head.insertBefore(injectFirstNode, head.firstChild);
+  }
+
   return (
     <>
       <Helmet>

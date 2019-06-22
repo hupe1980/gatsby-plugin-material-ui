@@ -1,22 +1,31 @@
 # gatsby-plugin-material-ui
 
-> A [Gatsby](https://github.com/gatsbyjs/gatsby) plugin for
-> [@material-ui/styles](https://github.com/mui-org/material-ui) with
-> built-in server-side rendering support.
+> A [Gatsby](https://github.com/gatsbyjs/gatsby) plugin for [@material-ui/styles](https://github.com/mui-org/material-ui) with built-in server-side rendering support.
 
-This is the plugin for Material-UI v4. The plugin for v3 can be found [here](https://github.com/hupe1980/gatsby-plugin-material-ui/tree/v1.2.5).
+This is the plugin for Material-UI v4.
+The plugin for v3 can be found [here](https://github.com/hupe1980/gatsby-plugin-material-ui/tree/v1.2.5).
 
 ## Install
 
-`npm install --save gatsby-plugin-material-ui @material-ui/styles`
+```sh
+npm install gatsby-plugin-material-ui @material-ui/styles
+```
 
 ## How to use
 
-Feel free to use the plugin without any options.
+The default options should be enough to cover the most common use cases.
 
-If using Material-UI together with other styling providers (like styled-components), you should make sure Material-UI styles end up on top of `<head>` (so the other styling providers can overwrite it). This is accomplished by editing `gatsby-config.js` in **one** of the two following ways:
+```js
+module.exports = {
+  plugins: [`gatsby-plugin-material-ui`],
+};
+```
 
-1. Add a `stylesProvider` property, and specify `injectFirst: true` (see below). This places Material-UI at the top of head
+## Usage with styled-components or else
+
+If using Material-UI together with other styling providers (like styled-components), you should make sure Material-UI styles end up on top of `<head>` (so the other styling providers can overwrite it).
+
+You can leverage the `injectFirst: true` prop the [`StylesProvider`](https://material-ui.com/styles/api/#stylesprovider) component:
 
 ```js
 module.exports = {
@@ -24,18 +33,26 @@ module.exports = {
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
-        disableAutoprefixing: false,
-        disableMinification: false,
         stylesProvider: {
           injectFirst: true,
         },
       },
     },
+    `gatsby-plugin-styled-components`,
   ],
 };
 ```
 
-2. Alternatively, specify a specific point in `<head>` where the styles will be injected. This is done by spcifying the `pathToStylesProvder` property **instead** of the `stylesProvider` property. It should point to a configuration file, as seen below. You will also find an example configuration file below.
+## Autoprefixing and minification
+
+By default, the plugin adds vendor-specific prefixes and minimizes the server-side CSS.
+The following options are available for deactivating:
+
+| Option               | Default | Description                          |
+| -------------------- | ------- | ------------------------------------ |
+| disableAutoprefixing | false   | Opt-out autoprefixing (autoprefixer) |
+| disableMinification  | false   | Opt-out minification (clean-css)     |
+
 
 ```js
 module.exports = {
@@ -45,49 +62,42 @@ module.exports = {
       options: {
         disableAutoprefixing: false,
         disableMinification: false,
-        pathToStylesProvider: 'src/utils/styles-provider-props',
       },
     },
   ],
 };
 ```
 
-## Example `styles-provider-props.js`
+## Advanced
 
-```js
-import { jssPreset } from '@material-ui/styles';
-import { create } from 'jss';
+You can use the `pathToStylesProvider` option instead of the `stylesProvider` one to provide rich object props to the [`StylesProvider`](https://material-ui.com/styles/api/#stylesprovider) component.
 
-const jssOptions = {
-  ...jssPreset(),
-  insertionPoint: document.getElementById('jss-insertion-point'),
+**gatsby-config.js.js**
+```
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        pathToStylesProvider: `src/styles-provider-props`,
+      },
+    },
+  ],
 };
-const jss = create(jssOptions);
+
+```
+
+**src/styles-provider-props.js**
+```
+import { jssPreset } from "@material-ui/styles";
+import { create } from "jss";
 
 const stylesProviderProps = {
-  // disableGeneration: false,
-  // generateClassName: () => {},
-  // injectFirst: false,
-  jss,
+  jss: create({ ...jssPreset(), insertionPoint: `mui-inject-first` }),
 };
 
 export default stylesProviderProps;
 ```
-
-## styles-provider-props.js Options
-
-- This file accept all props that `StylesProvider` accepts. They are simply passed directly on to `StylesProvider` as specified
-- To set a custom insertion point, create a new `jss` instance in this file, and assign it to the the `StylesProvider` `jss` prop (as shown above)
-- You have to manually specify the insertion point in `head`, as a `html` comment or a `noscript` tag. [More information on how that is done in Material-UI](https://material-ui.com/customization/css-in-js/#css-injection-order)
-
-## Autoprefixing and minification
-
-By default, the plugin adds vendor-specific prefixes and minimizes the server-side CSS. The following options are available for deactivating:
-
-| Option               | Default | Description                          |
-| -------------------- | ------- | ------------------------------------ |
-| disableAutoprefixing | false   | Opt-out Autoprefixing (autoprefixer) |
-| disableMinification  | false   | Opt-out minification (clean-css)     |
 
 ## Examples
 

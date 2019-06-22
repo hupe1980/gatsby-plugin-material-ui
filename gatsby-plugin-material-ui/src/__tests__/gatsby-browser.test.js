@@ -1,14 +1,6 @@
-import { onInitialClientRender } from '../gatsby-browser';
+import { onInitialClientRender } from "../gatsby-browser";
 
-jest.mock(
-  `../.cache/styles-provider-props`,
-  () => {
-    return {
-      injectFirst: true,
-    };
-  },
-  { virtual: true },
-);
+jest.mock(`../.cache/styles-provider-props`, () => null, { virtual: true });
 
 describe(`onInitialClientRender`, () => {
   afterAll(() => {

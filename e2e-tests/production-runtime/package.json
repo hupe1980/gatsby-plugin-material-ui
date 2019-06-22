@@ -6,12 +6,11 @@
     "@material-ui/core": "latest",
     "@material-ui/styles": "latest",
     "gatsby": "latest",
-    "gatsby-plugin-material-ui": "^2.0.1",
     "gatsby-plugin-react-helmet": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-helmet": "latest",
-    "cross-env": "^5.2.0"
+    "cross-env": "latest"
   },
   "license": "MIT",
   "scripts": {

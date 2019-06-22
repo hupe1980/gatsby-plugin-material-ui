@@ -1,6 +1,6 @@
-import React from 'react';
-import { StylesProvider } from '@material-ui/styles';
-import stylesProviderProps from './.cache/styles-provider-props';
+import React from "react";
+import { StylesProvider } from "@material-ui/styles";
+import stylesProviderProps from "./.cache/styles-provider-props";
 
 export const onInitialClientRender = () => {
   if (process.env.BUILD_STAGE === `develop`) {
@@ -14,10 +14,18 @@ export const onInitialClientRender = () => {
   }
 };
 
-// Pass through all StylesProvider props
 export const wrapRootElement = ({ element }, pluginOptions) => {
-  if (pluginOptions.stylesProvider || pluginOptions.pathToStylesProvider) {
-    return <StylesProvider {...stylesProviderProps}>{element}</StylesProvider>;
+  const stylesProvider = stylesProviderProps || pluginOptions.stylesProvider;
+
+  if (!stylesProvider) {
+    return element;
   }
-  return element;
+
+  if (stylesProviderProps && pluginOptions.stylesProvider) {
+    throw new Error(
+      `You specified both pathToStylesProvider and stylesProvider in gatsby-config.js. Remove one of them.`,
+    );
+  }
+
+  return <StylesProvider {...stylesProvider}>{element}</StylesProvider>;
 };

@@ -66,6 +66,6 @@ lib
 .DS_Store
 
 /gatsby-browser.js
-/gatsby-ssr.js
 /gatsby-node.js
-.cache
+/gatsby-ssr.js
+/.cache/
