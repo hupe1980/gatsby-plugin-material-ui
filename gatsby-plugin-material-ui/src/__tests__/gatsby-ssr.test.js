@@ -1,24 +1,8 @@
 import React from "react";
 
-describe(`gatsby-browser`, () => {
-  describe(`onInitialClientRender`, () => {
-    afterAll(() => {
-      delete process.env.BUILD_STAGE;
-    });
+jest.mock(`../.cache/styles-provider-props`, () => ({}), { virtual: true });
 
-    it(`should not invokes querySelector if BUILD_STAGE is develop`, () => {
-      jest.mock(`../.cache/styles-provider-props`, () => ({ test: 123 }), {
-        virtual: true,
-      });
-      const { onInitialClientRender } = require(`../gatsby-browser`);
-
-      const spy = jest.spyOn(document, `querySelector`);
-      process.env.BUILD_STAGE = `develop`;
-      onInitialClientRender();
-      expect(spy).not.toHaveBeenCalled();
-    });
-  });
-
+describe(`gatsby-ssr`, () => {
   describe(`wrapRootElement`, () => {
     beforeEach(() => jest.resetModules());
 
@@ -26,7 +10,7 @@ describe(`gatsby-browser`, () => {
       jest.mock(`../.cache/styles-provider-props`, () => ({ jss: {} }), {
         virtual: true,
       });
-      const { wrapRootElement } = require(`../gatsby-browser`);
+      const { wrapRootElement } = require(`../gatsby-ssr`);
 
       expect(() => {
         wrapRootElement(
@@ -44,7 +28,7 @@ describe(`gatsby-browser`, () => {
       jest.mock(`../.cache/styles-provider-props`, () => ({}), {
         virtual: true,
       });
-      const { wrapRootElement } = require(`../gatsby-browser`);
+      const { wrapRootElement } = require(`../gatsby-ssr`);
 
       expect(() => {
         wrapRootElement({ element: <div /> }, {});
@@ -55,7 +39,7 @@ describe(`gatsby-browser`, () => {
       jest.mock(`../.cache/styles-provider-props`, () => ({}), {
         virtual: true,
       });
-      const { wrapRootElement } = require(`../gatsby-browser`);
+      const { wrapRootElement } = require(`../gatsby-ssr`);
 
       expect(() => {
         wrapRootElement(
@@ -73,7 +57,7 @@ describe(`gatsby-browser`, () => {
       jest.mock(`../.cache/styles-provider-props`, () => ({ jss: {} }), {
         virtual: true,
       });
-      const { wrapRootElement } = require(`../gatsby-browser`);
+      const { wrapRootElement } = require(`../gatsby-ssr`);
 
       expect(() => {
         wrapRootElement({ element: <div /> }, {});
