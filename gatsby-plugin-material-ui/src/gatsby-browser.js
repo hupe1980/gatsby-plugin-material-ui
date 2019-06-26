@@ -18,7 +18,9 @@ export const onInitialClientRender = () => {
 };
 
 export const wrapRootElement = ({ element }, pluginOptions) => {
-  const stylesProvider = stylesProviderProps || pluginOptions.stylesProvider;
+  const stylesProvider = hasEntries(stylesProviderProps)
+    ? stylesProviderProps
+    : pluginOptions.stylesProvider;
 
   if (!stylesProvider) {
     return element;

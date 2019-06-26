@@ -14,7 +14,9 @@ const prefixer = postcss([autoprefixer]);
 const cleanCSS = new CleanCSS();
 
 export const wrapRootElement = ({ element, pathname }, pluginOptions) => {
-  const stylesProvider = stylesProviderProps || pluginOptions.stylesProvider;
+  const stylesProvider = hasEntries(stylesProviderProps)
+    ? stylesProviderProps
+    : pluginOptions.stylesProvider;
 
   if (hasEntries(stylesProviderProps) && pluginOptions.stylesProvider) {
     throw new Error(
