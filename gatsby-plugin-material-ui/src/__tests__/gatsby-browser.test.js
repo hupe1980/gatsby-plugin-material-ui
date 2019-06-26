@@ -22,7 +22,7 @@ describe(`gatsby-browser`, () => {
   describe(`wrapRootElement`, () => {
     beforeEach(() => jest.resetModules());
 
-    it(`should return an unwrapt element if nothing is specified`, () => {
+    it(`should return a pure element if nothing is specified`, () => {
       jest.mock(`../.cache/styles-provider-props`, () => ({}), {
         virtual: true,
       });
