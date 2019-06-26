@@ -1,5 +1,7 @@
 import { onInitialClientRender } from "../gatsby-browser";
 
+jest.mock(`../.cache/styles-provider-props`, () => null, { virtual: true });
+
 describe(`onInitialClientRender`, () => {
   afterAll(() => {
     delete process.env.BUILD_STAGE;

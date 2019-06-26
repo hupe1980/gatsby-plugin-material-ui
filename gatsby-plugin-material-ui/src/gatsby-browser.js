@@ -1,5 +1,6 @@
 import React from "react";
 import { StylesProvider } from "@material-ui/styles";
+import stylesProviderProps from "./.cache/styles-provider-props";
 
 export const onInitialClientRender = () => {
   if (process.env.BUILD_STAGE === `develop`) {
@@ -14,13 +15,17 @@ export const onInitialClientRender = () => {
 };
 
 export const wrapRootElement = ({ element }, pluginOptions) => {
-  if (pluginOptions.stylesProvider) {
-    return (
-      <StylesProvider {...pluginOptions.stylesProvider}>
-        {element}
-      </StylesProvider>
+  const stylesProvider = stylesProviderProps || pluginOptions.stylesProvider;
+
+  if (!stylesProvider) {
+    return element;
+  }
+
+  if (stylesProviderProps && pluginOptions.stylesProvider) {
+    throw new Error(
+      `You specified both pathToStylesProvider and stylesProvider in gatsby-config.js. Remove one of them.`,
     );
   }
 
-  return element;
+  return <StylesProvider {...stylesProvider}>{element}</StylesProvider>;
 };
