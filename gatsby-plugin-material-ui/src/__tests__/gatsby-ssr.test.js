@@ -1,7 +1,5 @@
 import React from "react";
 
-jest.mock(`../.cache/styles-provider-props`, () => ({}), { virtual: true });
-
 describe(`gatsby-ssr`, () => {
   describe(`wrapRootElement`, () => {
     beforeEach(() => jest.resetModules());
