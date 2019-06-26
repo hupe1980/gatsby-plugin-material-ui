@@ -7,7 +7,7 @@ describe(`gatsby-browser`, () => {
     });
 
     it(`should not invokes querySelector if BUILD_STAGE is develop`, () => {
-      jest.mock(`../.cache/styles-provider-props`, () => ({ test: 123 }), {
+      jest.mock(`../.cache/styles-provider-props`, () => ({}), {
         virtual: true,
       });
       const { onInitialClientRender } = require(`../gatsby-browser`);
