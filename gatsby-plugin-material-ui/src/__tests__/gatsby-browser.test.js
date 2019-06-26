@@ -22,6 +22,17 @@ describe(`gatsby-browser`, () => {
   describe(`wrapRootElement`, () => {
     beforeEach(() => jest.resetModules());
 
+    it(`should return an unwrapt element if nothing is specified`, () => {
+      jest.mock(`../.cache/styles-provider-props`, () => ({}), {
+        virtual: true,
+      });
+      const { wrapRootElement } = require(`../gatsby-browser`);
+
+      const element = wrapRootElement({ element: <div /> }, {});
+
+      expect(element).toEqual(<div />);
+    });
+
     it(`should throw an error if both pathToStylesProvider and stylesProvider are specified`, () => {
       jest.mock(`../.cache/styles-provider-props`, () => ({ jss: {} }), {
         virtual: true,
@@ -38,17 +49,6 @@ describe(`gatsby-browser`, () => {
           },
         );
       }).toThrowError();
-    });
-
-    it(`should not throw an error if nothing is specified`, () => {
-      jest.mock(`../.cache/styles-provider-props`, () => ({}), {
-        virtual: true,
-      });
-      const { wrapRootElement } = require(`../gatsby-browser`);
-
-      expect(() => {
-        wrapRootElement({ element: <div /> }, {});
-      }).not.toThrowError();
     });
 
     it(`should not throw an error if only stylesProvider is specified`, () => {
