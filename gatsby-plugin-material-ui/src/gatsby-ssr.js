@@ -3,6 +3,9 @@ import { ServerStyleSheets } from "@material-ui/styles";
 import postcss from "postcss";
 import autoprefixer from "autoprefixer";
 import CleanCSS from "clean-css";
+
+import { hasEntries } from "./utils";
+
 import stylesProviderProps from "./.cache/styles-provider-props";
 
 // Keep track of sheets for each page
@@ -11,9 +14,11 @@ const prefixer = postcss([autoprefixer]);
 const cleanCSS = new CleanCSS();
 
 export const wrapRootElement = ({ element, pathname }, pluginOptions) => {
-  const stylesProvider = stylesProviderProps || pluginOptions.stylesProvider;
+  const stylesProvider = hasEntries(stylesProviderProps)
+    ? stylesProviderProps
+    : pluginOptions.stylesProvider;
 
-  if (stylesProviderProps && pluginOptions.stylesProvider) {
+  if (hasEntries(stylesProviderProps) && pluginOptions.stylesProvider) {
     throw new Error(
       `You specified both pathToStylesProvider and stylesProvider in gatsby-config.js. Remove one of them.`,
     );
