@@ -2,8 +2,19 @@ const fs = require(`fs`);
 const path = require(`path`);
 const os = require(`os`);
 
-// Copy and past from https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-typography
+let didRunAlready = false;
 
+exports.onPreInit = () => {
+  if (didRunAlready) {
+    throw new Error(
+      `You can only have a single instance of gatsby-plugin-material-ui in your gatsby-config.js`,
+    );
+  }
+
+  didRunAlready = true;
+};
+
+// Copy and past from https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-typography
 exports.onPreBootstrap = ({ store }, pluginOptions) => {
   const program = store.getState().program;
 

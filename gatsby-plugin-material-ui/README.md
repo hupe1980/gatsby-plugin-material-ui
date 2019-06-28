@@ -16,6 +16,8 @@ npm install gatsby-plugin-material-ui @material-ui/styles
 The default options should be enough to cover the most common use cases.
 
 ```js
+// gatsby-config.js
+
 module.exports = {
   plugins: [`gatsby-plugin-material-ui`],
 };
@@ -28,6 +30,8 @@ If using Material-UI together with other styling providers (like styled-componen
 You can leverage the `injectFirst: true` prop the [`StylesProvider`](https://material-ui.com/styles/api/#stylesprovider) component:
 
 ```js
+// gatsby-config.js
+
 module.exports = {
   plugins: [
     {
@@ -53,8 +57,9 @@ The following options are available for deactivating:
 | disableAutoprefixing | false   | Opt-out autoprefixing (autoprefixer) |
 | disableMinification  | false   | Opt-out minification (clean-css)     |
 
-
 ```js
+// gatsby-config.js
+
 module.exports = {
   plugins: [
     {
@@ -72,8 +77,9 @@ module.exports = {
 
 You can use the `pathToStylesProvider` option instead of the `stylesProvider` one to provide rich object props to the [`StylesProvider`](https://material-ui.com/styles/api/#stylesprovider) component.
 
-**gatsby-config.js.js**
-```
+```js
+// gatsby-config.js
+
 module.exports = {
   plugins: [
     {
@@ -84,11 +90,11 @@ module.exports = {
     },
   ],
 };
-
 ```
 
-**src/styles-provider-props.js**
-```
+```js
+// src/styles-provider-props.js
+
 import { jssPreset } from "@material-ui/styles";
 import { create } from "jss";
 
