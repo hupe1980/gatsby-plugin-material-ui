@@ -1,28 +1,25 @@
 import React from "react";
 import { ServerStyleSheets } from "@material-ui/styles";
-import postcss from "postcss";
-import autoprefixer from "autoprefixer";
 import CleanCSS from "clean-css";
 
-import { hasEntries } from "./utils";
+import { hasEntries, prefix } from "./utils";
 
 import stylesProviderProps from "./.cache/styles-provider-props";
 
 // Keep track of sheets for each page
 const globalLeak = new Map();
-const prefixer = postcss([autoprefixer]);
 const cleanCSS = new CleanCSS();
 
 export const wrapRootElement = ({ element, pathname }, pluginOptions) => {
-  const stylesProvider = hasEntries(stylesProviderProps)
-    ? stylesProviderProps
-    : pluginOptions.stylesProvider;
-
   if (hasEntries(stylesProviderProps) && pluginOptions.stylesProvider) {
     throw new Error(
       `You specified both pathToStylesProvider and stylesProvider in gatsby-config.js. Remove one of them.`,
     );
   }
+
+  const stylesProvider = hasEntries(stylesProviderProps)
+    ? stylesProviderProps
+    : pluginOptions.stylesProvider;
 
   const sheets = new ServerStyleSheets(stylesProvider);
   globalLeak.set(pathname, sheets);
@@ -32,7 +29,7 @@ export const wrapRootElement = ({ element, pathname }, pluginOptions) => {
 
 export const onRenderBody = (
   { setHeadComponents, pathname },
-  pluginOptions,
+  { disableAutoprefixing = false, disableMinification = false },
 ) => {
   const sheets = globalLeak.get(pathname);
 
@@ -40,16 +37,9 @@ export const onRenderBody = (
     return;
   }
 
-  const {
-    disableAutoprefixing = false,
-    disableMinification = false,
-  } = pluginOptions;
-
   let css = sheets.toString();
 
-  css = disableAutoprefixing
-    ? css
-    : prefixer.process(css, { from: undefined }).css;
+  css = disableAutoprefixing ? css : prefix(css, pathname);
   css = disableMinification ? css : cleanCSS.minify(css).styles;
 
   setHeadComponents([
