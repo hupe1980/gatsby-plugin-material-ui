@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`utils prefix should throw an error if css is invalid1 1`] = `
+"Pathname: /test CssSyntaxError: <css input>:6:17: Unknown word
+
+  4 |         }
+  5 |         .jss1 {
+> 6 |             h1, h2, h3: [object Object];
+    |                 ^
+  7 |         }
+  8 |     
+"
+`;

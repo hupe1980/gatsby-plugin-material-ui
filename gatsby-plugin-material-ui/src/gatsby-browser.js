@@ -18,18 +18,18 @@ export const onInitialClientRender = () => {
 };
 
 export const wrapRootElement = ({ element }, pluginOptions) => {
+  if (hasEntries(stylesProviderProps) && pluginOptions.stylesProvider) {
+    throw new Error(
+      `You specified both pathToStylesProvider and stylesProvider in gatsby-config.js. Remove one of them.`,
+    );
+  }
+
   const stylesProvider = hasEntries(stylesProviderProps)
     ? stylesProviderProps
     : pluginOptions.stylesProvider;
 
   if (!stylesProvider) {
     return element;
-  }
-
-  if (hasEntries(stylesProviderProps) && pluginOptions.stylesProvider) {
-    throw new Error(
-      `You specified both pathToStylesProvider and stylesProvider in gatsby-config.js. Remove one of them.`,
-    );
   }
 
   return <StylesProvider {...stylesProvider}>{element}</StylesProvider>;
