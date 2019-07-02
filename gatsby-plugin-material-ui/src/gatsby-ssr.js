@@ -2,7 +2,8 @@ import React from "react";
 import { ServerStyleSheets } from "@material-ui/styles";
 import CleanCSS from "clean-css";
 
-import { hasEntries, prefix } from "./utils";
+import { hasEntries } from "./utils";
+import autoprefixer from "./autoprefixer";
 
 import stylesProviderProps from "./.cache/styles-provider-props";
 
@@ -39,7 +40,7 @@ export const onRenderBody = (
 
   let css = sheets.toString();
 
-  css = disableAutoprefixing ? css : prefix(css, pathname);
+  css = disableAutoprefixing ? css : autoprefixer(css, pathname);
   css = disableMinification ? css : cleanCSS.minify(css).styles;
 
   setHeadComponents([
