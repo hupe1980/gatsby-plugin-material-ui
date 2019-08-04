@@ -1,7 +1,7 @@
 {
   "name": "development-runtime",
   "private": true,
-  "version": "2.1.0",
+  "version": "2.1.5",
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/styles": "latest",
@@ -24,9 +24,9 @@
     "test": "cross-env CYPRESS_SUPPORT=y yarn start-server-and-test "
   },
   "devDependencies": {
+    "@testing-library/cypress": "^4.0.5",
     "cross-env": "^5.2.0",
     "cypress": "^3.4.1",
-    "@testing-library/cypress": "^4.0.5",
     "gatsby-cypress": "^0.2.3",
     "start-server-and-test": "^1.9.1"
   }
