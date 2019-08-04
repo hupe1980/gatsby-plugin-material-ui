@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "cypress": "^3.3.0",
-    "cypress-testing-library": "^3.0.1",
-    "gatsby-cypress": "^0.1.9",
-    "start-server-and-test": "^1.9.0"
+    "cypress": "^3.4.1",
+    "@testing-library/cypress": "^4.0.5",
+    "gatsby-cypress": "^0.2.3",
+    "start-server-and-test": "^1.9.1"
   }
 }
