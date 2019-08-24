@@ -65,9 +65,6 @@ lib
 
 .DS_Store
 
-/gatsby-browser.js
-/gatsby-node.js
-/gatsby-ssr.js
+/*.js
+!index.js
 /.cache/
-/utils.js
-/autoprefixer.js
