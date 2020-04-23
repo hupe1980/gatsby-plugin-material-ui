@@ -1,9 +1,9 @@
 import React from "react";
 import { StylesProvider } from "@material-ui/styles";
 
-import { hasEntries } from "./utils";
+import stylesProviderProps from "material-ui-plugin-cache-endpoint";
 
-import stylesProviderProps from "./.cache/styles-provider-props";
+import { hasEntries } from "./utils";
 
 export const onInitialClientRender = () => {
   if (process.env.BUILD_STAGE === `develop`) {

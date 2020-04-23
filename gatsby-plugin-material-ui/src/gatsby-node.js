@@ -38,7 +38,7 @@ exports.onPreBootstrap = ({ store, cache }, pluginOptions) => {
     fs.mkdirSync(dir);
   }
 
-  fs.writeFileSync(`${dir}/styles-provider-props.js`, module);
+  fs.writeFileSync(path.join(dir, `styles-provider-props.js`), module);
 };
 
 // Copy and past from https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-typography
