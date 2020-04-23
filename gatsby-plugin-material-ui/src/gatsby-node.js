@@ -15,7 +15,7 @@ exports.onPreInit = () => {
 };
 
 // Copy and past from https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-typography
-exports.onPreBootstrap = ({ store }, pluginOptions) => {
+exports.onPreBootstrap = ({ store, cache }, pluginOptions) => {
   const program = store.getState().program;
 
   let module;
@@ -32,11 +32,24 @@ exports.onPreBootstrap = ({ store }, pluginOptions) => {
     module = null;
   }
 
-  const dir = `${__dirname}/.cache`;
+  const dir = cache.directory;
 
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
 
   fs.writeFileSync(`${dir}/styles-provider-props.js`, module);
+};
+
+// Copy and past from https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-typography
+exports.onCreateWebpackConfig = ({ actions, cache }) => {
+  const cacheFile = path.join(cache.directory, `styles-provider-props.js`);
+  const { setWebpackConfig } = actions;
+  setWebpackConfig({
+    resolve: {
+      alias: {
+        "material-ui-plugin-cache-endpoint": cacheFile,
+      },
+    },
+  });
 };
