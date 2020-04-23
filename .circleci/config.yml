@@ -3,7 +3,7 @@ version: 2.1
 aliases:
   node-executor: &node-executor
     docker:
-      - image: circleci/node:10.13
+      - image: circleci/node:10
 
   e2e-executor: &e2e-executor
     docker:
