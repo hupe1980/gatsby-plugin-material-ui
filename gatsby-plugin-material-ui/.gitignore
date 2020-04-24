@@ -67,4 +67,3 @@ lib
 
 /*.js
 !index.js
-/.cache/

@@ -7,7 +7,7 @@ describe(`gatsby-browser`, () => {
     });
 
     it(`should not invokes querySelector if BUILD_STAGE is develop`, () => {
-      jest.mock(`../.cache/styles-provider-props`, () => ({}), {
+      jest.mock(`material-ui-plugin-cache-endpoint`, () => ({}), {
         virtual: true,
       });
       const { onInitialClientRender } = require(`../gatsby-browser`);
@@ -23,7 +23,7 @@ describe(`gatsby-browser`, () => {
     beforeEach(() => jest.resetModules());
 
     it(`should return a pure element if nothing is specified`, () => {
-      jest.mock(`../.cache/styles-provider-props`, () => ({}), {
+      jest.mock(`material-ui-plugin-cache-endpoint`, () => ({}), {
         virtual: true,
       });
       const { wrapRootElement } = require(`../gatsby-browser`);
@@ -34,7 +34,7 @@ describe(`gatsby-browser`, () => {
     });
 
     it(`should throw an error if both pathToStylesProvider and stylesProvider are specified`, () => {
-      jest.mock(`../.cache/styles-provider-props`, () => ({ jss: {} }), {
+      jest.mock(`material-ui-plugin-cache-endpoint`, () => ({ jss: {} }), {
         virtual: true,
       });
       const { wrapRootElement } = require(`../gatsby-browser`);
@@ -52,7 +52,7 @@ describe(`gatsby-browser`, () => {
     });
 
     it(`should not throw an error if only stylesProvider is specified`, () => {
-      jest.mock(`../.cache/styles-provider-props`, () => ({}), {
+      jest.mock(`material-ui-plugin-cache-endpoint`, () => ({}), {
         virtual: true,
       });
       const { wrapRootElement } = require(`../gatsby-browser`);
@@ -70,7 +70,7 @@ describe(`gatsby-browser`, () => {
     });
 
     it(`should not throw an error if only stylesProviderProps are specified`, () => {
-      jest.mock(`../.cache/styles-provider-props`, () => ({ jss: {} }), {
+      jest.mock(`material-ui-plugin-cache-endpoint`, () => ({ jss: {} }), {
         virtual: true,
       });
       const { wrapRootElement } = require(`../gatsby-browser`);

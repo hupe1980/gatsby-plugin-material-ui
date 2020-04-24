@@ -2,10 +2,10 @@ import React from "react";
 import { ServerStyleSheets } from "@material-ui/styles";
 import CleanCSS from "clean-css";
 
+import stylesProviderProps from "material-ui-plugin-cache-endpoint";
+
 import { hasEntries } from "./utils";
 import autoprefixer from "./autoprefixer";
-
-import stylesProviderProps from "./.cache/styles-provider-props";
 
 // Keep track of sheets for each page
 const globalLeak = new Map();

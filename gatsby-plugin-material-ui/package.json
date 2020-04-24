@@ -3,7 +3,6 @@
   "version": "2.1.6",
   "description": "Gatsby plugin for Material-UI with built-in server-side rendering support",
   "license": "MIT",
-  "author": "hello@webappsolutions.de",
   "repository": {
     "type": "git",
     "url": "https://github.com/hupe1980/gatsby-plugin-material-ui"
@@ -38,5 +37,11 @@
     "babel-preset-gatsby-package": "^0.2.2",
     "cross-env": "^5.2.0",
     "jest": "^24.8.0"
+  },
+  "jest": {
+    "testMatch": ["<rootDir>/src/__tests__/**/*.test.js"],
+    "moduleNameMapper": {
+      "material-ui-plugin-cache-endpoint": "<rootDir>/src/__tests__/dummy-styles-provider-props.js"
+    }
   }
 }
