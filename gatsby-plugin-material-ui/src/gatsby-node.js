@@ -29,7 +29,7 @@ exports.onPreBootstrap = ({ store, cache }, pluginOptions) => {
       module = module.split(`\\`).join(`\\\\`);
     }
   } else {
-    module = null;
+    module = `module.exports = null`;
   }
 
   const dir = cache.directory;
