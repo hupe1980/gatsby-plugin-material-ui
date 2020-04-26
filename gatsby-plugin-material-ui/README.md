@@ -107,6 +107,6 @@ export default stylesProviderProps;
 
 ## Examples
 
-You can find an official integration example of this plugin [on Material-UI side](https://github.com/mui-org/material-ui/tree/master/examples/gatsby), then you can pick one of the [Page Layout Examples](https://material-ui.com/getting-started/page-layout-examples/).
+You can find an official integration example of this plugin [on the Material-UI site](https://github.com/mui-org/material-ui/tree/master/examples/gatsby), then you can pick one of the [Page Layout Examples](https://material-ui.com/getting-started/page-layout-examples/).
 
 If you want to save time with a more opinionated solution. You can start with [a premade theme](https://github.com/hupe1980/gatsby-theme-material-ui).
