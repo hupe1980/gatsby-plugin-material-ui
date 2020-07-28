@@ -16,6 +16,11 @@ If you'd only like to use [Material-UI's Styling Solution](https://material-ui.c
 ```sh
 npm install gatsby-plugin-material-ui @material-ui/styles
 ```
+
+## Theme vs. Plugin
+- `gatsby-plugin-material-ui` solves FOUC, auto prefixing and minification.
+- `gatsby-theme-material-ui` uses the plugin under the hood, adds web fonts, meta-viewport, CSS baseline and mui theme support and has material ui styled gatsby link components
+
 ## How to use
 
 The default options should be enough to cover the most common use cases.
