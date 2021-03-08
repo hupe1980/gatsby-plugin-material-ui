@@ -1,9 +1,16 @@
 import postcss from "postcss";
 import autoprefixer from "autoprefixer";
-import { getBrowsersList } from "gatsby/utils/browserslist";
+import { parseConfig } from "browserslist";
+import rcConfig from "!!raw-loader!/.browserslistrc";
+import packageConfig from "!!raw-loader!/package.json";
 
 export default function(css, pathname) {
-  const browsersList = getBrowsersList();
+  let browsersList;
+  if (rcConfig) {
+    browsersList = parseConfig(config);
+  } else {
+    browsersList = parseConfig(packageConfig);
+  }
 
   const prefixer = postcss([
     autoprefixer({ overrideBrowserslist: browsersList }),
