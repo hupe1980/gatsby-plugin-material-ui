@@ -1,12 +1,12 @@
 import postcss from "postcss";
 import autoprefixer from "autoprefixer";
-import { browserslist } from "gatsby";
+import { getBrowsersList } from "gatsby/utils/browserslist";
 
 export default function(css, pathname) {
-  const supportedBrowsers = browserslist();
+  const browsersList = getBrowsersList();
 
   const prefixer = postcss([
-    autoprefixer({ overrideBrowserslist: supportedBrowsers }),
+    autoprefixer({ overrideBrowserslist: browsersList }),
   ]);
 
   try {
