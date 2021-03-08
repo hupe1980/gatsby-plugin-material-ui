@@ -40,5 +40,8 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "lerna": "^3.16.4",
     "prettier": "^1.18.2"
+  },
+  "peerDependencies": {
+    "gatsby": "^3.0.3"
   }
 }
