@@ -1,15 +1,15 @@
 import postcss from "postcss";
 import autoprefixer from "autoprefixer";
 import { parseConfig } from "browserslist";
-import rcConfig from "!!raw-loader!/.browserslistrc";
 import packageConfig from "!!raw-loader!/package.json";
 
 export default function(css, pathname) {
   let browsersList;
-  if (rcConfig) {
-    browsersList = parseConfig(config);
+  if (packageConfig && packageConfig.browserslist) {
+    browsersList = packageConfig.browserslist;
   } else {
-    browsersList = parseConfig(packageConfig);
+    const rcConfig = require("!!raw-loader!/.browserslistrc");
+    browsersList = parseConfig(rcConfig).defaults;
   }
 
   const prefixer = postcss([
