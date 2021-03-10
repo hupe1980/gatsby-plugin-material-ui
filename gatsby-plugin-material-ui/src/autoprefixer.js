@@ -1,19 +1,14 @@
 import postcss from "postcss";
 import autoprefixer from "autoprefixer";
-import { parseConfig } from "browserslist";
-import packageConfig from "!!raw-loader!/package.json";
+import package from "./package.json";
 
 export default function(css, pathname) {
-  let browsersList;
-  if (packageConfig && packageConfig.browserslist) {
-    browsersList = packageConfig.browserslist;
-  } else {
-    const rcConfig = require("!!raw-loader!/.browserslistrc");
-    browsersList = parseConfig(rcConfig).defaults;
-  }
+  const browserslist = package.browserslist
+    ? package.browserslist
+    : [`>0.25%`, `not dead`];
 
   const prefixer = postcss([
-    autoprefixer({ overrideBrowserslist: browsersList }),
+    autoprefixer({ overrideBrowserslist: browserslist }),
   ]);
 
   try {

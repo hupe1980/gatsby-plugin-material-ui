@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "autoprefixer": "^9.6.1",
-    "browserslist": "^4.16.3",
     "clean-css": "^4.2.1",
     "postcss": "^7.0.17"
   },
