@@ -1,11 +1,9 @@
 import postcss from "postcss";
 import autoprefixer from "autoprefixer";
-import package from "./package.json";
+import { loadCachedConfig } from "babel-preset-gatsby";
 
 export default function(css, pathname) {
-  const browserslist = package.browserslist
-    ? package.browserslist
-    : [`>0.25%`, `not dead`];
+  const { browserslist } = loadCachedConfig();
 
   const prefixer = postcss([
     autoprefixer({ overrideBrowserslist: browserslist }),
