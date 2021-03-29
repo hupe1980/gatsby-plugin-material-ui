@@ -3,11 +3,11 @@ version: 2.1
 aliases:
   node-executor: &node-executor
     docker:
-      - image: circleci/node:10
+      - image: circleci/node:12.13
 
   e2e-executor: &e2e-executor
     docker:
-      - image: cypress/browsers:node10.16.0-chrome76
+      - image: cypress/browsers:node12.18.3-chrome87-ff82
 
   restore_cache: &restore_cache
     restore_cache:
