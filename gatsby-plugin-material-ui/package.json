@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-material-ui",
-  "version": "2.1.10",
+  "version": "3.0.0",
   "description": "Gatsby plugin for Material-UI with built-in server-side rendering support",
   "license": "MIT",
   "repository": {
@@ -45,7 +45,7 @@
     ],
     "moduleNameMapper": {
       "material-ui-plugin-cache-endpoint": "<rootDir>/src/__tests__/dummy-styles-provider-props.js",
-        "/package.json": "<rootDir>/src/__tests__/dummy-pkg.json"
+      "/package.json": "<rootDir>/src/__tests__/dummy-pkg.json"
     }
   }
 }

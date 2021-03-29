@@ -1,7 +1,7 @@
 {
   "name": "development-runtime",
   "private": true,
-  "version": "2.1.5",
+  "version": "3.0.0",
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/styles": "latest",
