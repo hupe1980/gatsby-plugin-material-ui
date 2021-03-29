@@ -44,7 +44,8 @@
       "<rootDir>/src/__tests__/**/*.test.js"
     ],
     "moduleNameMapper": {
-      "material-ui-plugin-cache-endpoint": "<rootDir>/src/__tests__/dummy-styles-provider-props.js"
+      "material-ui-plugin-cache-endpoint": "<rootDir>/src/__tests__/dummy-styles-provider-props.js",
+        "/package.json": "<rootDir>/src/__tests__/dummy-pkg.json"
     }
   }
 }
