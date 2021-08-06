@@ -8,6 +8,6 @@ describe(`navigation`, () => {
 
     cy.getTestElement(`about-message`)
       .invoke(`text`)
-      .should(`equal`, `Gatsby v4-beta example`);
+      .should(`equal`, `Gatsby example`);
   });
 });

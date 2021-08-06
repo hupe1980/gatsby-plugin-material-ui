@@ -1,13 +1,8 @@
 module.exports = {
   plugins: [
     `gatsby-plugin-top-layout`,
-    {
-      resolve: `gatsby-plugin-material-ui`,
-      options: {
-        pathToStylesProvider: `src/styles-provider-props`,
-      },
-    },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-material-ui`,
   ],
   siteMetadata: {
     title: `My page`,

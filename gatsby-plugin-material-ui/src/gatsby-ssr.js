@@ -1,55 +1,33 @@
-import React from "react";
-import { ServerStyleSheets } from "@material-ui/styles";
-import CleanCSS from "clean-css";
+import * as React from "react";
+import { CacheProvider } from "@emotion/react";
+import createEmotionServer from "@emotion/server/create-instance";
+import { renderToString } from "react-dom/server";
+import getEmotionCache from "./get-emotion-cache";
 
-import stylesProviderProps from "material-ui-plugin-cache-endpoint";
+export const replaceRenderer = ({
+  bodyComponent,
+  setHeadComponents,
+  replaceBodyHTMLString,
+}) => {
+  const cache = getEmotionCache();
+  const { extractCriticalToChunks } = createEmotionServer(cache);
 
-import { hasEntries } from "./utils";
-import autoprefixer from "./autoprefixer";
+  const emotionStyles = extractCriticalToChunks(
+    renderToString(
+      <CacheProvider value={cache}>{bodyComponent}</CacheProvider>,
+    ),
+  );
 
-// Keep track of sheets for each page
-const globalLeak = new Map();
-const cleanCSS = new CleanCSS();
+  setHeadComponents(
+    emotionStyles.styles.map((style) => (
+      <style
+        data-emotion={`${style.key} ${style.ids.join(` `)}`}
+        key={style.key}
+        dangerouslySetInnerHTML={{ __html: style.css }}
+      />
+    )),
+  );
 
-export const wrapRootElement = ({ element, pathname }, pluginOptions) => {
-  if (hasEntries(stylesProviderProps) && pluginOptions.stylesProvider) {
-    throw new Error(
-      `You specified both pathToStylesProvider and stylesProvider in gatsby-config.js. Remove one of them.`,
-    );
-  }
-
-  const stylesProvider = hasEntries(stylesProviderProps)
-    ? stylesProviderProps
-    : pluginOptions.stylesProvider;
-
-  const sheets = new ServerStyleSheets(stylesProvider);
-  globalLeak.set(pathname, sheets);
-
-  return sheets.collect(element);
-};
-
-export const onRenderBody = (
-  { setHeadComponents, pathname },
-  { disableAutoprefixing = false, disableMinification = false },
-) => {
-  const sheets = globalLeak.get(pathname);
-
-  if (!sheets) {
-    return;
-  }
-
-  let css = sheets.toString();
-
-  css = disableAutoprefixing ? css : autoprefixer(css, pathname);
-  css = disableMinification ? css : cleanCSS.minify(css).styles;
-
-  setHeadComponents([
-    <style
-      id="jss-server-side"
-      key="jss-server-side"
-      dangerouslySetInnerHTML={{ __html: css }}
-    />,
-  ]);
-
-  globalLeak.delete(pathname);
+  // render the result from `extractCritical`
+  replaceBodyHTMLString(emotionStyles.html);
 };

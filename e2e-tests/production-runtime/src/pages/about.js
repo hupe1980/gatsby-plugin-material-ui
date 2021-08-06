@@ -29,7 +29,7 @@ export default function App() {
           component="h1"
           gutterBottom
         >
-          Gatsby v4-beta example
+          Gatsby example
         </Typography>
         <Link to="/">Go to the main page</Link>
         <ProTip />
