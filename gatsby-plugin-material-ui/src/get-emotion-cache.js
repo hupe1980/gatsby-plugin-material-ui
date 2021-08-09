@@ -1,5 +1,5 @@
 import createCache from "@emotion/cache";
 
-export default function getEmotionCache() {
-  return createCache({ key: `css` });
+export default function getEmotionCache(props) {
+  return createCache(props ?? { key: `css` });
 }

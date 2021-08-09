@@ -25,6 +25,35 @@ module.exports = {
 };
 ```
 
+## Advanced
+
+You can use the `pathToEmotionCacheProps` option for low level customization of how styles get inserted by [emotion](https://emotion.sh/docs/@emotion/cache#createcache).
+
+```js
+// gatsby-config.js
+
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        pathToEmotionCacheProps: `src/emotion-cache-props`,
+      },
+    },
+  ],
+};
+```
+
+```js
+// src/emotion-cache-props.js
+const emotionCacheProps = {
+  key: `xyz`,
+  nonce: `XXXYYYZZZ`
+};
+
+export default emotionCacheProps;
+```
+
 ## Examples
 
 You can find an official integration example of this plugin [on the Material-UI site](https://github.com/mui-org/material-ui/tree/master/examples/gatsby), then you can pick one of the [Page Layout Examples](https://material-ui.com/getting-started/page-layout-examples/).
