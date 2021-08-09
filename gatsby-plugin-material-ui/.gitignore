@@ -67,5 +67,3 @@ lib
 
 /*.js
 !index.js
-!.eslintrc.js
-!.prettierrc.js

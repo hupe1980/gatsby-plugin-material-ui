@@ -1,7 +1,6 @@
 module.exports = {
   parser: `@babel/eslint-parser`,
-  extends: [`eslint:recommended`, `plugin:react/recommended`, `prettier`],
-  plugins: [`prettier`],
+  extends: [`eslint:recommended`, `plugin:react/recommended`],
   parserOptions: {
     ecmaVersion: 2016,
     sourceType: `module`,
@@ -9,7 +8,7 @@ module.exports = {
       jsx: true,
     },
     babelOptions: {
-      configFile: `./.babelrc`,
+      configFile: `./gatsby-plugin-material-ui/.babelrc`,
     },
   },
   env: {
@@ -24,7 +23,6 @@ module.exports = {
     },
   },
   rules: {
-    "prettier/prettier": `error`,
     quotes: [`error`, `backtick`],
   },
   overrides: [

@@ -1,0 +1,8 @@
+/.git
+/coverage
+/e2e-tests/**/public/
+
+/gatsby-plugin-material-ui/**/*.js
+!/gatsby-plugin-material-ui/src/**/*.js
+
+node_modules
