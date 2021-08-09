@@ -26,14 +26,17 @@
     "build:watch": "babel -w src --out-dir .",
     "prepare": "cross-env NODE_ENV=production npm run build"
   },
+  "dependencies": {
+    "@emotion/server": "^11.4.0"
+  },
   "peerDependencies": {
-    "@emotion/server": "^11.4.0",
+    "@emotion/react": "^11.4.0",
     "gatsby": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
-    "@emotion/server": "^11.4.0",
+    "@emotion/react": "^11.4.0",
     "babel-preset-gatsby-package": "^1.0.0",
     "cross-env": "^7.0.3"
   }
