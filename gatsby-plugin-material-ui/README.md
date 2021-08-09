@@ -6,7 +6,7 @@ This is the plugin for Material-UI v5 (emotion). The plugin for v4 can be found 
 
 ## Install
 ```sh
-npm install gatsby-plugin-material-ui@next @emotion/server
+npm install gatsby-plugin-material-ui@next @emotion/react
 ```
 
 ## Theme vs. Plugin
