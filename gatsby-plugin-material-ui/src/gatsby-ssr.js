@@ -2,6 +2,9 @@ import * as React from "react";
 import { CacheProvider } from "@emotion/react";
 import createEmotionServer from "@emotion/server/create-instance";
 import { renderToString } from "react-dom/server";
+
+import emotionCacheProps from "material-ui-plugin-cache-endpoint";
+
 import getEmotionCache from "./get-emotion-cache";
 
 export const replaceRenderer = ({
@@ -9,7 +12,7 @@ export const replaceRenderer = ({
   setHeadComponents,
   replaceBodyHTMLString,
 }) => {
-  const cache = getEmotionCache();
+  const cache = getEmotionCache(emotionCacheProps);
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
   const emotionStyles = extractCriticalToChunks(
