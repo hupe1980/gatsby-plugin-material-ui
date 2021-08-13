@@ -28,6 +28,7 @@
     "prepare": "cross-env NODE_ENV=production npm run build"
   },
   "dependencies": {
+    "@emotion/cache": "^11.4.0",
     "@emotion/server": "^11.4.0"
   },
   "peerDependencies": {
