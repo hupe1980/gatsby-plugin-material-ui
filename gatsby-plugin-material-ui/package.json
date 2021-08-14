@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-material-ui",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Gatsby plugin for Material-UI with built-in server-side rendering support",
   "license": "MIT",
   "repository": {
