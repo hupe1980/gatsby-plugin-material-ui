@@ -1,7 +1,7 @@
 {
   "name": "production-runtime",
   "private": true,
-  "version": "4.0.1",
+  "version": "4.0.3",
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
