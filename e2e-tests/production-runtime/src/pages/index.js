@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import MuiLink from "@material-ui/core/Link";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import MuiLink from "@mui/material/Link";
 
 import ProTip from "../components/pro-tip";
 import Link from "../components/link";
@@ -24,7 +24,7 @@ export default function App() {
     <Container maxWidth="sm">
       <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>
-          Gatsby v4-beta example
+          Gatsby example
         </Typography>
         <Link to="/about" color="secondary">
           Go to the about page

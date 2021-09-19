@@ -1,13 +1,13 @@
 module.exports = {
   plugins: [
     `gatsby-plugin-top-layout`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
-        pathToStylesProvider: `src/styles-provider-props`,
+        pathToEmotionCacheProps: `src/emotion-cache-props`,
       },
     },
-    `gatsby-plugin-react-helmet`,
   ],
   siteMetadata: {
     title: `My page`,
