@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-material-ui",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "Gatsby plugin for Material-UI with built-in server-side rendering support",
   "license": "MIT",
   "repository": {
@@ -28,18 +28,18 @@
     "prepare": "cross-env NODE_ENV=production npm run build"
   },
   "dependencies": {
-    "@emotion/cache": "^11.4.0",
-    "@emotion/server": "^11.4.0"
+    "@emotion/cache": "^11.10.5",
+    "@emotion/server": "^11.10.0"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.4.0",
-    "gatsby": "^3.0.0 || ^4.0.0"
+    "@emotion/react": "^11.10.5",
+    "gatsby": "^3.0.0 || ^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@emotion/react": "^11.4.0",
-    "babel-preset-gatsby-package": "^2.2.0",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.2",
+    "@emotion/react": "^11.10.5",
+    "babel-preset-gatsby-package": "^3.0.0",
     "cross-env": "^7.0.3"
   }
 }
