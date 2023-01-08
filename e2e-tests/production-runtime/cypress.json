@@ -1,5 +1,0 @@
-{
-  "baseUrl": "http://localhost:9000",
-  "failOnStatusCode": false,
-  "video": false
-}

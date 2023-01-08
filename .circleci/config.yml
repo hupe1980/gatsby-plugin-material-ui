@@ -3,11 +3,11 @@ version: 2.1
 aliases:
   node-executor: &node-executor
     docker:
-      - image: circleci/node:14
+      - image: cimg/node:lts
 
   e2e-executor: &e2e-executor
     docker:
-      - image: cypress/browsers:node14.15.0-chrome86-ff82
+      - image: cypress/browsers:node18.12.0-chrome106-ff106
 
   restore_cache: &restore_cache
     restore_cache:
@@ -87,7 +87,5 @@ workflows:
     jobs:
       - bootstrap
       - lint
-      - e2e_tests_development_runtime:
-          <<: *e2e-test-workflow
-      - e2e_tests_production_runtime:
-          <<: *e2e-test-workflow
+      - e2e_tests_development_runtime
+      - e2e_tests_production_runtime

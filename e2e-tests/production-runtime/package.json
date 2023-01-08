@@ -1,7 +1,7 @@
 {
   "name": "production-runtime",
   "private": true,
-  "version": "4.1.0",
+  "version": "5.0.0",
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
@@ -26,9 +26,9 @@
     "test": "cross-env CYPRESS_SUPPORT=y yarn build && yarn start-server-and-test "
   },
   "devDependencies": {
-    "@testing-library/cypress": "^8.0.0",
-    "cypress": "^9.0.0",
-    "gatsby-cypress": "^2.2.0",
-    "start-server-and-test": "^1.9.1"
+    "@testing-library/cypress": "^8.0.7",
+    "cypress": "^11.1.0",
+    "gatsby-cypress": "^3.1.0",
+    "start-server-and-test": "^1.14.0"
   }
 }
